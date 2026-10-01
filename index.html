@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>당근 장난감 사냥</title>
+<meta name="theme-color" content="#0F3D2E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F3F6F4;--card:#fff;--ink:#14261F;--mut:#5E7068;--line:#D6E1DA;--g:#0F3D2E;--g2:#1F6B4F;--tint:#E3EFE8;--carrot:#E8590C;--ok:#1F7A4D;--warn:#B7791F;--bad:#B23A2E;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A15;--card:#16251E;--ink:#E6F0EA;--mut:#93A89D;--line:#2A4036;--g:#8FD0AE;--g2:#6DBE96;--tint:#1B2F26;--carrot:#FF8A3D;--ok:#58C08A;--warn:#E3B04B;--bad:#EE7A6B}}
+:root[data-theme="dark"]{--bg:#0E1A15;--card:#16251E;--ink:#E6F0EA;--mut:#93A89D;--line:#2A4036;--g:#8FD0AE;--g2:#6DBE96;--tint:#1B2F26;--carrot:#FF8A3D;--ok:#58C08A;--warn:#E3B04B;--bad:#EE7A6B}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans KR',-apple-system,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;font-size:15px;line-height:1.55}
+.wrap{max-width:720px;margin:0 auto;padding:16px 14px 60px}
+h1{font-size:22px;margin:6px 0 2px;color:var(--g);letter-spacing:-.3px}
+.sub{color:var(--mut);font-size:13px;margin:0 0 14px}
+h2{font-size:16px;margin:22px 0 8px;color:var(--g);border-bottom:2px solid var(--g);padding-bottom:4px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 12px;border-radius:999px;font:inherit;font-size:13.5px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--g);color:var(--card);border-color:var(--g)}
+.lbl{font-size:12.5px;color:var(--mut);margin:10px 0 5px}
+.toy{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:11px 12px;margin-bottom:9px}
+.toy .top{display:flex;gap:10px;align-items:baseline}
+.rk{font-weight:700;color:var(--g2);min-width:20px}
+.nm{font-weight:700;color:var(--ink)}
+.pro{color:var(--mut);font-size:13px;margin:2px 0 8px 30px}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-left:30px}
+a.go{background:var(--carrot);color:#fff;text-decoration:none;padding:6px 10px;border-radius:6px;font-size:13px;font-weight:700}
+.cap{display:flex;align-items:center;gap:5px;font-size:12.5px;color:var(--mut)}
+.cap input{width:78px;border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:5px 6px;border-radius:6px;font:inherit;font-size:13px;text-align:right}
+textarea{width:100%;min-height:110px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);padding:10px;font:inherit;font-size:14px}
+.btn{background:var(--g);color:var(--card);border:0;border-radius:8px;padding:10px 16px;font:inherit;font-weight:700;cursor:pointer}
+.btn.sec{background:var(--tint);color:var(--g)}
+.res{margin-top:10px;border-radius:8px;border:1px solid var(--line);background:var(--card);overflow:hidden}
+.res .v{padding:10px 12px;font-weight:700;color:#fff}
+.v.ok{background:var(--ok)}.v.warn{background:var(--warn)}.v.bad{background:var(--bad)}.v.na{background:var(--mut)}
+.res ul{margin:0;padding:10px 14px 4px 28px;font-size:13.5px}
+.res .act{padding:8px 12px 12px;display:flex;gap:6px;flex-wrap:wrap}
+.sl{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin-bottom:7px;font-size:13.5px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.sl b{color:var(--g)}
+.pin{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:10px;font:inherit;width:150px}
+.foot{margin-top:24px;font-size:12px;color:var(--mut);border-top:1px dashed var(--line);padding-top:10px}
+.msg{white-space:pre-wrap;background:var(--tint);border-radius:8px;padding:10px 12px;font-size:13.5px;margin-top:8px}
+</style></head><body><div class="wrap">
+<h1>당근 장난감 사냥</h1>
+<p class="sub">추천 리스트 10종을 도곡·수서·가락시장·래미안강남힐즈 근처 당근 매물과 맞춰 보고, 살지 말지 판정합니다.</p>
+
+<h2>1. 지역과 거래 장소</h2>
+<div class="lbl">검색할 구 (당근 검색 링크에 적용)</div>
+<div class="chips" id="gu"></div>
+<div class="lbl">거래 가능한 장소 (판정에서 근처 동네로 인식)</div>
+<div class="chips" id="spot"></div>
+
+<h2>2. 추천 장난감 검색</h2>
+<p class="sub" style="margin:0 0 8px">버튼을 누르면 당근에서 해당 구 검색 결과가 열립니다. 상한가는 직접 수정할 수 있고 이 기기에 저장됩니다.</p>
+<div id="toys"></div>
+
+<h2>3. 매물 판정</h2>
+<p class="sub" style="margin:0 0 8px">당근 글의 제목·가격·동네를 복사해 붙여넣으세요.</p>
+<textarea id="paste" placeholder="예) 피셔프라이스 러닝홈 판매해요 / 12,000원 / 도곡동 / 상태 좋아요"></textarea>
+<div style="margin-top:8px"><button class="btn" id="judge">판정하기</button></div>
+<div id="out"></div>
+
+<h2>4. 구매 후보</h2>
+<div id="short"></div>
+
+<h2>5. 기기 간 동기화</h2>
+<p class="sub" style="margin:0 0 8px">같은 숫자 PIN(6~12자리)을 쓰는 기기끼리 상한가·구매 후보·선택값이 맞춰집니다.</p>
+<div class="row" style="margin-left:0"><input id="pin" class="pin" type="password" inputmode="numeric" maxlength="12" placeholder="PIN 6~12자리" autocomplete="off"><button class="btn" id="conn">연결</button><button class="btn sec" id="disc">해제</button></div>
+<div id="syncst" class="sub" style="margin-top:8px"></div>
+
+<div class="foot">당근은 외부 앱이 목록을 읽어 오는 공개 연동을 제공하지 않아, 검색 링크 열기와 붙여넣기 판정 방식으로 구성했습니다. 상한가는 참고용 초기값이므로 실제 시세를 보고 조정하세요. 어린이 용품은 구매 후 세척·소독과 파손 여부 확인이 필요합니다.</div>
+</div>
+<script>
+const GU={"강남구":"강남구-381","서초구":"서초구-362","송파구":"송파구-404"};
+const SPOTS={"도곡역":["도곡동","대치동","역삼동"],"수서역":["수서동","일원동","세곡동","개포동","자곡동"],"가락시장역":["가락동","문정동","송파동","오금동"],"래미안강남힐즈":["개포동","일원동","도곡동","대모산"]};
+const TOYS=[
+{n:"피셔프라이스 러닝홈(국민문짝)",pro:"문·시계·초인종 탐색과 까꿍 놀이",kw:["러닝홈","국민문짝","국민대문","피셔프라이스 문"],cap:15000,q:"러닝홈"},
+{n:"태기스 애착인형(메리메이어)",pro:"라벨 촉감으로 정서 안정·분리수면",kw:["태기스","메리메이어","애착인형"],cap:10000,q:"태기스 애착인형"},
+{n:"실리콘 스태킹 컵",pro:"쌓기·무너뜨리기·숨기기 놀이",kw:["스태킹컵","스태킹 컵","컵쌓기","컵 쌓기"],cap:4000,q:"스태킹컵"},
+{n:"하베브릭스 변신큐브",pro:"버튼·거울·분해 탐색 한 번에",kw:["하베브릭스","변신큐브","변신 큐브"],cap:15000,q:"하베브릭스 변신큐브"},
+{n:"고려베이비 원목 롤러코스터",pro:"구슬 따라 밀며 눈-손 협응",kw:["롤러코스터","고려베이비"],cap:15000,q:"원목 롤러코스터"},
+{n:"또또볼 치발기(아띠래빗)",pro:"이 나는 시기 입으로 탐색",kw:["또또볼","아띠래빗"],cap:5000,q:"또또볼"},
+{n:"이븐플로 아마존 쏘서",pro:"앉기·점프 연습, 장난감 조작",kw:["쏘서","아마존쏘서","이븐플로"],cap:30000,q:"이븐플로 쏘서"},
+{n:"사운드북(플레이송스·블루래빗)",pro:"소리를 따라 옹알이, 언어 자극",kw:["사운드북","플레이송스","블루래빗","사운드 북"],cap:8000,q:"사운드북"},
+{n:"원목 악기 세트·레인보우메이커",pro:"두드려 소리 탐색",kw:["악기 세트","악기세트","레인보우메이커","레인보우 메이커","탬버린"],cap:10000,q:"아기 악기 세트"},
+{n:"점퍼루(피셔프라이스)",pro:"발 구르기·점프 활동, 장시간 사용은 피하기",kw:["점퍼루"],cap:30000,q:"점퍼루"}
+];
+const DISC=[{k:["보행기","어라운드위고"],t:"보행기 형태는 안전 문제로 소아과에서 권하지 않는 경우가 많아 비추천"}];
+const BAD=["파손","깨짐","깨졌","금이","곰팡이","냄새","하자","고장","작동 안","작동안","리콜","부품 없","구성품 없","부품없"];
+const GOOD=["미개봉","새상품","새 상품","풀박스","거의 새","새것"];
+const HYG=["치발기","애착인형","태기스","또또볼","컵"];
+const API="https://toy-hunter-api.yjjn2005.workers.dev";
+const st={gu:["강남구","서초구","송파구"],spot:["도곡역","수서역","가락시장역","래미안강남힐즈"],cap:{},short:[],del:[],prefT:0,pin:""};
+try{const x=JSON.parse(localStorage.getItem("toyhunter")||"null");if(x){for(const k of Object.keys(st))if(x[k]!==undefined)st[k]=x[k]}}catch(e){}
+Object.keys(st.cap).forEach(k=>{if(typeof st.cap[k]==="number")st.cap[k]={v:st.cap[k],t:0}});
+st.short.forEach((x,i)=>{if(!x.id)x.id="m"+(x.at||Date.now())+i});
+function getCap(t){return st.cap[t.n]?st.cap[t.n].v:t.cap}
+function mergeState(a,b){// a=로컬, b=서버
+ const o={cap:{},gu:a.gu,spot:a.spot,prefT:a.prefT||0};
+ const keys=new Set([...Object.keys(a.cap||{}),...Object.keys(b.cap||{})]);
+ keys.forEach(k=>{const x=a.cap&&a.cap[k],y=b.cap&&b.cap[k];o.cap[k]=!x?y:!y?x:(y.t>x.t?y:x)});
+ if((b.prefT||0)>o.prefT&&b.gu&&b.spot){o.gu=b.gu;o.spot=b.spot;o.prefT=b.prefT}
+ const del=new Set([...(a.del||[]),...(b.del||[])]);
+ const map=new Map();[...(a.short||[]),...(b.short||[])].forEach(x=>{if(x&&x.id&&!del.has(x.id)&&!map.has(x.id))map.set(x.id,x)});
+ o.short=[...map.values()].sort((p,q)=>(q.at||0)-(p.at||0)).slice(0,30);o.del=[...del].slice(-200);return o}
+let pushT=null;
+function setSt(m){const e=document.getElementById("syncst");if(e)e.textContent=m}
+function payload(){return{cap:st.cap,gu:st.gu,spot:st.spot,prefT:st.prefT,short:st.short,del:st.del}}
+function save(){try{localStorage.setItem("toyhunter",JSON.stringify(st))}catch(e){}if(st.pin&&API){clearTimeout(pushT);pushT=setTimeout(push,900)}}
+async function api(method,body){const r=await fetch(API+"/sync",{method,headers:{"X-Pin":st.pin,"Content-Type":"application/json"},body:body?JSON.stringify(body):undefined});if(!r.ok)throw new Error(r.status);return r.json()}
+async function push(){try{await api("PUT",{data:payload()});setSt("동기화됨 "+new Date().toLocaleTimeString("ko-KR"))}catch(e){setSt("동기화 실패: 네트워크 또는 PIN 형식을 확인하세요")}}
+async function pull(){if(!st.pin||!API)return;try{setSt("동기화 중...");const r=await api("GET");const m=mergeState(payload(),r.data||{});Object.assign(st,m);try{localStorage.setItem("toyhunter",JSON.stringify(st))}catch(e){}render();await push()}catch(e){setSt("동기화 실패: 네트워크를 확인하세요")}}
+function chips(id,list,key){const el=document.getElementById(id);el.innerHTML="";list.forEach(x=>{const b=document.createElement("button");b.className="chip";b.textContent=x;b.setAttribute("aria-pressed",st[key].includes(x));b.onclick=()=>{const i=st[key].indexOf(x);i>=0?st[key].splice(i,1):st[key].push(x);st.prefT=Date.now();save();render()};el.appendChild(b)})}
+function url(g,q){return "https://www.daangn.com/kr/search/buy-sell/?in="+encodeURIComponent(GU[g])+"&q="+encodeURIComponent(q)}
+function render(){chips("gu",Object.keys(GU),"gu");chips("spot",Object.keys(SPOTS),"spot");
+const T=document.getElementById("toys");T.innerHTML="";
+TOYS.forEach((t,i)=>{const cap=getCap(t);const d=document.createElement("div");d.className="toy";
+d.innerHTML=`<div class="top"><span class="rk">${i+1}</span><span class="nm">${t.n}</span></div><div class="pro">${t.pro}</div><div class="row"></div>`;
+const r=d.querySelector(".row");
+(st.gu.length?st.gu:["강남구"]).forEach(g=>{const a=document.createElement("a");a.className="go";a.href=url(g,t.q);a.target="_blank";a.rel="noopener";a.textContent="당근 "+g;r.appendChild(a)});
+const c=document.createElement("label");c.className="cap";c.innerHTML=`상한 <input type="number" inputmode="numeric" step="1000" value="${cap}"> 원`;
+c.querySelector("input").onchange=e=>{st.cap[t.n]={v:+e.target.value||0,t:Date.now()};save()};r.appendChild(c);T.appendChild(d)});
+renderShort()}
+function parsePrice(s){if(/무료\s*나눔|나눔/.test(s))return 0;
+let m=s.match(/(\d+(?:\.\d+)?)\s*만\s*(?:(\d)\s*천)?\s*(\d{1,4})?\s*원?/);if(m){return Math.round(+m[1]*10000)+(m[2]?+m[2]*1000:0)+(m[3]?+m[3]:0)}
+m=s.match(/(\d)\s*천\s*원/);if(m)return +m[1]*1000;
+m=s.match(/(\d{1,3}(?:,\d{3})+|\d{3,7})\s*원/);if(m)return +m[1].replace(/,/g,"");
+m=s.match(/(\d{1,3}(?:,\d{3})+)/);if(m)return +m[1].replace(/,/g,"");return null}
+let last=null;
+function judge(){const raw=document.getElementById("paste").value.trim();const out=document.getElementById("out");if(!raw){out.innerHTML="";return}
+const s=raw.replace(/\s+/g," ");const notes=[];let lvl=0;
+const toy=TOYS.find(t=>t.kw.some(k=>s.includes(k)));
+const disc=DISC.find(d=>d.k.some(k=>s.includes(k)));
+const price=parsePrice(s);
+const dongs=[...new Set(st.spot.flatMap(x=>SPOTS[x]))];const near=dongs.filter(d=>s.includes(d));
+let title,cls;
+if(/거래\s*완료|판매\s*완료/.test(s)){title="이미 거래 완료된 글";cls="na";notes.push("거래가 끝난 글입니다. 다른 매물을 찾아보세요.")}
+else if(disc&&!toy){title="비추천 상품";cls="bad";notes.push(disc.t)}
+else if(!toy){title="추천 리스트에 없는 상품";cls="na";notes.push("제목에서 리스트 10종의 이름을 찾지 못했습니다. 제품명을 포함해 다시 붙여넣어 보세요.")}
+else{const cap=getCap(toy);notes.push("매칭: "+toy.n+" (상한 "+cap.toLocaleString()+"원)");
+if(/예약\s*중/.test(s)){lvl=Math.max(lvl,1);notes.push("예약중 표시가 있어 다른 구매자가 먼저일 수 있습니다.")}
+if(price===null){lvl=Math.max(lvl,1);notes.push("가격을 읽지 못했습니다. 가격을 직접 확인하세요.")}
+else{if(price<=cap)notes.push("가격 "+price.toLocaleString()+"원: 상한 이내");
+else if(price<=cap*1.2){lvl=Math.max(lvl,1);notes.push("가격 "+price.toLocaleString()+"원: 상한보다 "+(price-cap).toLocaleString()+"원 높음, 가격 제안 필요")}
+else{lvl=Math.max(lvl,2);notes.push("가격 "+price.toLocaleString()+"원: 상한 대비 많이 높음")}}
+const bad=BAD.filter(k=>s.includes(k));if(bad.length){lvl=Math.max(lvl,2);notes.push("주의 표현 발견: "+bad.join(", ")+" (상태를 꼭 확인)")}
+if(GOOD.some(k=>s.includes(k)))notes.push("상태 좋음 표현이 있어 우선 확인할 만합니다.");
+if(HYG.some(k=>toy.n.includes(k)||toy.kw.includes(k)))notes.push("아기 입·피부에 닿는 제품이므로 구매 후 세척·소독하세요.");
+if(disc)notes.push(disc.t);
+if(near.length)notes.push("근처 동네 확인: "+near.join(", "));else notes.push("선택한 거래 장소 근처 동네명이 글에 없습니다. 거래 가능한 동네인지 확인하세요.");
+if(/택배/.test(s))notes.push("택배 거래 언급이 있습니다. 직접 확인이 어려우니 사진·상태를 더 요청하세요.");
+title=["구매 추천","협상 후 구매","패스 권장"][lvl];cls=["ok","warn","bad"][lvl]}
+last={toy:toy?toy.n:null,price,title,raw:s.slice(0,80)};
+out.innerHTML=`<div class="res"><div class="v ${cls}">${title}</div><ul>${notes.map(n=>"<li>"+n+"</li>").join("")}</ul><div class="act"></div></div>`;
+if(toy&&cls!=="na"){const act=out.querySelector(".act");
+const b=document.createElement("button");b.className="btn sec";b.textContent="구매 후보에 담기";b.onclick=()=>{st.short.unshift({...last,id:"i"+Date.now().toString(36)+Math.random().toString(36).slice(2,6),at:Date.now()});st.short=st.short.slice(0,30);save();renderShort()};act.appendChild(b);
+const m=document.createElement("button");m.className="btn sec";m.textContent="거래 문자 만들기";m.onclick=()=>{const sp=st.spot.length?st.spot.join(" 또는 "):"근처";const t=`안녕하세요! 올리신 ${toy.n.split("(")[0]} 아직 거래 가능할까요?\n${sp}에서 직거래 가능합니다.\n구성품이 모두 있는지, 사진 한 장만 더 부탁드려요.`;
+let box=out.querySelector(".msg");if(!box){box=document.createElement("div");box.className="msg";out.querySelector(".res").appendChild(box)}box.textContent=t;
+try{navigator.clipboard.writeText(t)}catch(e){}};act.appendChild(m)}}
+function renderShort(){const el=document.getElementById("short");el.innerHTML="";if(!st.short.length){el.innerHTML='<div class="sub">아직 담은 매물이 없습니다.</div>';return}
+st.short.forEach((x,i)=>{const d=document.createElement("div");d.className="sl";d.innerHTML=`<div><b>${x.toy}</b><br>${x.price==null?"가격 미확인":x.price.toLocaleString()+"원"} · ${x.title}</div>`;
+const b=document.createElement("button");b.className="chip";b.textContent="삭제";b.onclick=()=>{st.del.push(x.id);st.short.splice(i,1);save();renderShort()};d.appendChild(b);el.appendChild(d)})}
+document.getElementById("judge").onclick=judge;
+document.getElementById("conn").onclick=()=>{const v=document.getElementById("pin").value.trim();if(!/^\d{6,12}$/.test(v)){setSt("PIN은 숫자 6~12자리로 입력하세요");return}if(!API){setSt("서버 주소(API)가 아직 설정되지 않았습니다");return}st.pin=v;document.getElementById("pin").value="";save();pull()};
+document.getElementById("disc").onclick=()=>{st.pin="";save();setSt("동기화를 해제했습니다 (이 기기의 데이터는 유지)")};
+render();
+if(st.pin)pull();else setSt(API?"연결 안 됨":"서버 주소(API)가 아직 설정되지 않았습니다");
+</script></body></html>

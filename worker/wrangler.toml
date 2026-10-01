@@ -1,0 +1,10 @@
+name = "toy-hunter-api"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+ALLOW_ORIGINS = "https://yjjn2005.github.io,http://localhost:8000"
+
+[[kv_namespaces]]
+binding = "TOY_KV"
+id = "ac19f8e3aaf245eba84976988550a331"
